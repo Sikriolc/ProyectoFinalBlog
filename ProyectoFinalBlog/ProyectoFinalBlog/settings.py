@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'AppInterface',
     'AppNoticias',
+    "AppPublicaciones",
 ]
 
 MIDDLEWARE = [

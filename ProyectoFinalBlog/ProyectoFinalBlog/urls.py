@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("AppInterface.urls")),
     path("",include("AppNoticias.urls")),
+    path("",include("AppPublicaciones.urls")),
 ]
