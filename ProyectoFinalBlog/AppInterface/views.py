@@ -16,3 +16,4 @@ def nosotros(request):
 def contacto(request):
 
   return render(request,"AppInterface/contacto.html",)
+
