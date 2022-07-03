@@ -1,5 +1,40 @@
 {% extends "AppInterface\base.html" %}
 
-{% block Contenido %} 
-Categorias
+{% block Titulo %} Categorias {% endblock %}
+
+{% block Contenido %}
+
+<div class="card">
+  <div class="card-header">
+    Lista de Categorias
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Categorias</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Categoria</th>
+          <th>Detalle</th>
+          <th>Icono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>       
+        <tr>
+          <td>1</td>
+          <td>Plataforma de Videojuego</td>
+          <td>Novedades sobre plat...</td>
+          <td>Icon</td>
+          <td>Editar|Borrar</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
+
 {% endblock%}
