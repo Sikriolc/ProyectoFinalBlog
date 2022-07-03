@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -10,7 +11,9 @@ def inicio(request):
 
 def categorias(request):
 
-  return render(request,"AppInterface/categorias.html",)
+  categorias= Categoria.objects.all()
+
+  return render(request,"AppInterface/categorias.html",{"categorias":categorias})
 
 def categorias_crear(request):
 

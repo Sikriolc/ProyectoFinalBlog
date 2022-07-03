@@ -3,37 +3,44 @@
 {% block Titulo %} Categorias {% endblock %}
 
 {% block Contenido %}
+<div class="container px-5">
+  <div class="card">
+    <div class="card-header">
+      <a name="" id="" class="btn btn-primary" href="crearcategoria" role="button">Crear Nueva Categoria</a>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Categorias</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Icono</th>
+            <th>ID</th>
+            <th>Categoria</th>
+            <th>Detalle</th>            
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody> 
+          {% for categoria in categorias %}      
+          <tr>
+            <td>
+              
+              <img src="{{categoria.icono.url}}" height="50" />
 
-<div class="card">
-  <div class="card-header">
-    Lista de Categorias
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">Categorias</h4>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Categoria</th>
-          <th>Detalle</th>
-          <th>Icono</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>       
-        <tr>
-          <td>1</td>
-          <td>Plataforma de Videojuego</td>
-          <td>Novedades sobre plat...</td>
-          <td>Icon</td>
-          <td>Editar|Borrar</td>
-        </tr>
-      </tbody>
-    </table>
-    
-  </div>
-  <div class="card-footer text-muted">
-    Footer
+            </td>
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.titulo}}</td>
+            <td>{{categoria.detalle}}</td>            
+            <td><a name="" id="" class="btn btn-info" href="editarcategoria" role="button"> Editar</a>|Borrar</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+    </div>
+    <div class="card-footer text-muted">
+      Footer
+    </div>
   </div>
 </div>
 
