@@ -6,7 +6,7 @@ from django.db import models
 class Categoria(models.Model):
   titulo = models.CharField(max_length=50, verbose_name="titulo")
   detalle = models.CharField(max_length=100,verbose_name="detalle")
-  icono = models.ImageField(upload_to="imagenes/",null=True,verbose_name="icono")
+  icono = models.ImageField(upload_to="imagenes/",verbose_name="icono",null=True)
 
   def __str__(self):
     fila = "Titulo: " + self.titulo + "-" + self.detalle

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -17,7 +18,12 @@ def categorias(request):
 
 def categorias_crear(request):
 
-  return render(request,"AppInterface/categorias_crear.html")
+  formulario = CategoriaForm(request.POST,request.FILES or None)
+  if formulario.is_valid():
+    formulario.save()
+    return redirect("categorias")
+
+  return render (request,"AppInterface/categorias_crear.html",{"formulario":formulario})
 
 def categorias_editar(request):
 
