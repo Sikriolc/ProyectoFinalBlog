@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
   email=forms.EmailField()
   password1=forms.CharField(label="Contraseña",widget=forms.PasswordInput)
   password2=forms.CharField(label="Confirmar Contraseña",widget=forms.PasswordInput)
-  image= forms.ImageField()
+  image= forms.ImageField(required=False)
 
   class Meta:
     model= User

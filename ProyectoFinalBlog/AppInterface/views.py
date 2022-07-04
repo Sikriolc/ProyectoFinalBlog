@@ -46,7 +46,7 @@ def register_request(request):
       user=authenticate(username=username, password=password)
 
 
-      return redirect("")
+      return redirect("inicio")
     return render(request,"AppInterface/register.html",{"form":form})
 
   form=UserRegisterForm()
