@@ -8,6 +8,9 @@ from django.contrib.staticfiles.urls import static
 urlpatterns = [
     path('', views.inicio, name="inicio"),
     path('inicio', views.inicio, name="inicio"),
+    path('login', views.login_request, name="login"),
+    path('logout', views.logout_request, name="logout"),
+    path('register', views.register_request, name="register"),
 
     path('categorias', views.categorias, name="categorias"),
     path('crearcategoria', views.categorias_crear, name="crearcategoria"),

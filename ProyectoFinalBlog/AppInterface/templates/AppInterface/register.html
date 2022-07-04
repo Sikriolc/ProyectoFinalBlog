@@ -1,0 +1,12 @@
+{% extends "AppInterface\base.html" %}
+
+{% load static %}
+{% block Titulo %} Registrarse {% endblock %}
+
+{% block Contenido %} 
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Resgistar</button>
+    </form>
+{% endblock%}
