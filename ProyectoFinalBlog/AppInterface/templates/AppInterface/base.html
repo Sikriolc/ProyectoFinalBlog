@@ -59,8 +59,12 @@
                       </li>       
                       <li class="nav-item"><a class="nav-link" href="nosotros">Sobre Nosotros</a></li>
                       <li class="nav-item"><a class="nav-link" href="contacto">Contacto</a></li>
-                      <li class="nav-item"><a class="btn btn-primary mx-2" href="login">Iniciar Sesion</a></li>
-                      <li class="nav-item"><a class="btn btn-outline-primary mx-2" href="register">Registrarse</a></li>                        
+                      {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="btn btn-danger mx-2" href="logout">Cerrar Sesion</a></li>
+                      {% else %}
+                        <li class="nav-item"><a class="btn btn-primary mx-2" href="login">Iniciar Sesion</a></li>
+                        <li class="nav-item"><a class="btn btn-outline-primary mx-2" href="register">Registrarse</a></li>
+                      {% endif %}                        
                   </ul>
               </div>
           </div>
