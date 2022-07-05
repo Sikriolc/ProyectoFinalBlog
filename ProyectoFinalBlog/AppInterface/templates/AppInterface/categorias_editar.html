@@ -1,24 +1,20 @@
 {% extends "AppInterface\base.html" %}
 
-{% block Titulo %} Editar categoria {% endblock %}
+{% block Titulo %} Crear categoria {% endblock %}
 
 {% block Contenido %}
+<div class="container px-5">
+  <div class="card">
+    <div class="card-header">
+      Crear una Categoria
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Datos de la Categoria:</h4>
 
-<div class="card">
-  <div class="card-header">
-    Editar una Categoria
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">Titulo de Categoria</h4>
+      {% include "AppInterface/form.html" %} 
 
-    {% include "AppInterface/form.html" %} 
-
-
-
-  </div>
-  <div class="card-footer text-muted">
-    Footer
+    </div>
+  
   </div>
 </div>
-
 {% endblock %}

@@ -5,17 +5,25 @@
 
   <div class="mb-3">
     <label for="" class="form-label"> {{ campo.label }} </label>
+    <br>
+    {% if campo.field.widget.input_type == 'file' and campo.value %}
+    
+    <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" alt="" width="50" srcset="">
+
+    {% endif %}
+
     <input 
     type="{{ campo.field.widget.input_type }}"
     class="form-control" 
     name="{{ campo.name }}" 
     id="" 
     aria-describedby="helpId" 
-    placeholder="{{ campo.label }}">
+    placeholder="{{ campo.label }}"
+    value="{{ campo.value | default:'' }}">
     
   </div>
   <div class="col-12 help-text"> {{ campo.errors }} </div>  
   {% endfor %}
-  <input name="" id="" class="btn btn-success" type="submit" value="Crear">
+  <input name="" id="" class="btn btn-success" type="submit" value="Ingresar">
 
 </form>

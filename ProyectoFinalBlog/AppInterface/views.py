@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
@@ -67,9 +68,13 @@ def categorias_crear(request):
 
   return render (request,"AppInterface/categorias_crear.html",{"formulario":formulario})
 
-def categorias_editar(request):
-
-  return render(request,"AppInterface/categorias_editar.html")
+def categorias_editar(request,id):
+  categoria= Categoria.objects.get(id=id)
+  formulario = CategoriaForm(request.POST or None,request.FILES or None,instance=categoria)
+  if formulario.is_valid() and request.POST:
+    formulario.save()
+    return redirect("categorias")
+  return render (request,"AppInterface/categorias_editar.html",{"formulario":formulario})
 
 def categorias_eliminar(request,id):
   categoria = Categoria.objects.get(id=id)

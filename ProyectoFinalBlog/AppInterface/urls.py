@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('categorias', views.categorias, name="categorias"),
     path('crearcategoria', views.categorias_crear, name="crearcategoria"),
-    path('editarcategoria', views.categorias_editar, name="editarcategoria"),
+    path('editarcategoria/<int:id>', views.categorias_editar, name="editarcategoria"),
     path('eliminar/<int:id>', views.categorias_eliminar, name="eliminarcategoria"),
 
     path('nosotros', views.nosotros, name="nosotros"),
