@@ -52,6 +52,21 @@ def register_request(request):
 
   form=UserRegisterForm()
   return render(request,"AppInterface/register.html",{"form":form})
+
+def editar_perfil(request):
+
+  user = request.user
+
+  if request.method == "POST":
+    pass
+  else:
+
+    formulario = UserEditForm(initial={"email":user.email})
+
+  return render(request,"AppInterface/editarperfil.html",{"formulario":formulario})
+
+
+
 #---------------------------------------
 def categorias(request):
 

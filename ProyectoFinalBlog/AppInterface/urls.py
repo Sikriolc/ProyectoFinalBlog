@@ -11,6 +11,7 @@ urlpatterns = [
     path('login', views.login_request, name="login"),
     path('logout', views.logout_request, name="logout"),
     path('register', views.register_request, name="register"),
+    path('editarperfil', views.editar_perfil, name="editarperfil"),
 
     path('categorias', views.categorias, name="categorias"),
     path('crearcategoria', views.categorias_crear, name="crearcategoria"),

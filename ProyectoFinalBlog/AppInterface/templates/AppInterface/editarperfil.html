@@ -1,0 +1,20 @@
+{% extends "AppInterface\base.html" %}
+
+{% load static %}
+{% block Titulo %} Editar Perfil {% endblock %}
+
+{% block Contenido %} 
+  <section class="bg-light py-5">
+    <div class="container px-5">
+      <h1> Editar Perfil "{{user.username}}" </h1>
+      <br>
+
+      <form action="" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Guardar Cambios</button>
+      </form>
+    </div>
+  </section>
+
+{% endblock%}
