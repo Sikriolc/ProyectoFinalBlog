@@ -60,7 +60,7 @@ def categorias(request):
 
 def categorias_crear(request):
 
-  formulario = CategoriaForm(request.POST,request.FILES or None)
+  formulario = CategoriaForm(request.POST or None,request.FILES or None)
   if formulario.is_valid():
     formulario.save()
     return redirect("categorias")
@@ -70,6 +70,11 @@ def categorias_crear(request):
 def categorias_editar(request):
 
   return render(request,"AppInterface/categorias_editar.html")
+
+def categorias_eliminar(request,id):
+  categoria = Categoria.objects.get(id=id)
+  categoria.delete()
+  return redirect("categorias")
 
 #---------------------------------------
 
