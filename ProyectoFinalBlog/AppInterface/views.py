@@ -10,6 +10,8 @@ def inicio(request):
     return render(request, "AppInterface/inicio.html",)
 
 #---------------------------------------
+def perfil(request):
+    return render(request, "AppInterface/perfil.html",)
 
 def login_request(request):
   if request.method=="POST":

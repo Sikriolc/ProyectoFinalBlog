@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout', views.logout_request, name="logout"),
     path('register', views.register_request, name="register"),
     path('editarperfil', views.editar_perfil, name="editarperfil"),
+    path('perfil', views.perfil, name="perfil"),
 
     path('categorias', views.categorias, name="categorias"),
     path('crearcategoria', views.categorias_crear, name="crearcategoria"),

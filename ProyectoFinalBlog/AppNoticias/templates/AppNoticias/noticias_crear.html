@@ -1,0 +1,20 @@
+{% extends "AppInterface\base.html" %}
+
+{% block Titulo %} Crear Noticia {% endblock %}
+
+{% block Contenido %}
+<div class="container px-5">
+  <div class="card">
+    <div class="card-header">
+      Crear una Noticia
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Datos de la Noticia:</h4>
+
+      {% include "AppInterface/form.html" %} 
+
+    </div>
+  
+  </div>
+</div>
+{% endblock %}
