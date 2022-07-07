@@ -29,6 +29,8 @@ class UserEditForm(UserCreationForm):
       fields = ['email','password1','password2']
       help_texts={k:"" for k in fields}
 
+
+
     
 
 
