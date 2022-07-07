@@ -75,6 +75,11 @@ def editar_perfil(request):
 
   return render(request,"AppInterface/editarperfil.html",{"form":form})
 
+def perfil(request):
+  form = User.objects.all()
+
+  return render(request,"AppInterface/perfil.html",{"form":form})
+
 
 
 #---------------------------------------
