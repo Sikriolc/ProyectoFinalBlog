@@ -10,10 +10,10 @@ def noticias(request):
 
 
 def noticia_crear(request):
-
+  categorias=Categoria.objects.all()
   formulario = NoticiaForm(request.POST or None,request.FILES or None)
   if formulario.is_valid():
     formulario.save()
     return redirect("categorias")
 
-  return render (request,"AppNoticias/noticias_crear.html",{"formulario":formulario})
+  return render (request,"AppNoticias/noticias_crear.html",{"formulario":formulario,"categorias":categorias},)
