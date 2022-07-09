@@ -4,10 +4,12 @@ from .models import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm #, UserCreationForm
 from django.contrib.auth import login,logout, authenticate 
+from AppNoticias.models import *
 # Create your views here.
 
 def inicio(request):
-    return render(request, "AppInterface/inicio.html",)
+  categorias=Categoria.objects.all()[0:2]
+  return render(request, "AppInterface/inicio.html",{"categorias":categorias})
 
 #---------------------------------------
 def perfil(request):
