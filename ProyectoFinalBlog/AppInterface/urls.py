@@ -19,6 +19,6 @@ urlpatterns = [
     path('editarcategoria/<int:id>', views.categorias_editar, name="editarcategoria"),
     path('eliminar/<int:id>', views.categorias_eliminar, name="eliminarcategoria"),
 
-    path('nosotros', views.nosotros, name="nosotros"),
+    path('about', views.nosotros, name="about"),
     path('contacto', views.contacto, name="contacto"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
