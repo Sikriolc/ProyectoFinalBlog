@@ -13,7 +13,8 @@ def inicio(request):
 
 #---------------------------------------
 def perfil(request):
-    return render(request, "AppInterface/perfil.html",)
+    user=User.objects.all()
+    return render(request, "AppInterface/perfil.html",{"user":user})
 
 def login_request(request):
   if request.method=="POST":
@@ -66,7 +67,9 @@ def editar_perfil(request):
     if form.is_valid():
       info=form.cleaned_data
       user.email=info["email"]
-      user.first_name=info["first_name"]
+      user.fecha_nacimiento=info["fecha_nacimiento"]
+      user.password1=info["password1"]
+      user.biografia=info["biografia"]
 
       user.save()
 

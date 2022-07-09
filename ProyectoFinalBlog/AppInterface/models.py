@@ -16,5 +16,3 @@ class Categoria(models.Model):
   def delete(self, using=None, keep_parents=False):
     self.icono.storage.delete(self.icono.name)
     super().delete()
-
-  
