@@ -9,7 +9,8 @@ from multiselectfield import MultiSelectField
 class Noticia(models.Model):
   titulo=models.CharField(max_length=100)
   subtitulo=models.CharField(max_length=100)
-  fecha=datetime.datetime.now()  
+  fecha=models.DateField(null=True)
+  hora=models.TimeField(null=True)
   categoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
   imagen=models.ImageField(upload_to="imagenes/",verbose_name="imagen",null=True)
   cuerpo=models.TextField(null=True)
