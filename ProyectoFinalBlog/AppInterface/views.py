@@ -67,9 +67,7 @@ def editar_perfil(request):
     if form.is_valid():
       info=form.cleaned_data
       user.email=info["email"]
-      user.fecha_nacimiento=info["fecha_nacimiento"]
       user.password1=info["password1"]
-      user.biografia=info["biografia"]
 
       user.save()
 
@@ -80,11 +78,37 @@ def editar_perfil(request):
 
   return render(request,"AppInterface/editarperfil.html",{"form":form})
 
+def editar_PlusUser(request):
+  plus = request.user
+
+  if request.method == "POST":
+
+    PlusForm=EditPlusUser(request.POST, request.FILES)
+
+    if PlusForm.is_valid():
+
+      info2=PlusForm.cleaned_data
+      plus.email=info2["email"]
+      plus.password1=info2["password1"]
+      plus.password2=info2["password2"]
+      plus.nick_name=info2["nick_name"]
+      plus.fecha_nacimiento=info2["fecha_nacimiento"]
+      plus.foto_perfil=info2["foto_perfil"]
+      plus.biografia=info2["biografia"]
+      plus.save()
+      return redirect("inicio")
+
+  else:
+
+    PlusForm=EditPlusUser(initial={"email":plus.email})
+
+  return render(request,"AppInterface/editarperfil.html",{"PlusForm":PlusForm})
+
 def perfil(request):
-  form = User.objects.all()
+  #form = User.objects.all()
+  plus= PlusUser.objects.all()
 
-  return render(request,"AppInterface/perfil.html",{"form":form})
-
+  return render(request,"AppInterface/perfil.html",{"plus":plus})
 
 
 #---------------------------------------

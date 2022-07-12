@@ -4,8 +4,6 @@
   {% for campo in formulario %}
 
   <div class="mb-3">
-    <label for="formFile" class="form-label">{{ campo.label }}</label>
-    <input class="form-control" type="file" id="formFile">
     <label for="" class="form-label"> {{ campo.label }} </label>
     <br>
     {% if campo.field.widget.input_type == 'file' and campo.value %}
