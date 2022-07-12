@@ -7,6 +7,7 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 
 class Noticia(models.Model):
+  autor=models.CharField(max_length=100)
   titulo=models.CharField(max_length=100)
   subtitulo=models.CharField(max_length=100)
   fecha=models.DateField(null=True)
