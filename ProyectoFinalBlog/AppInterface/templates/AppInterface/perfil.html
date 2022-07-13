@@ -22,12 +22,12 @@
                   <div class="mb-1 text-muted"><b>{{plus.nick_name}}</b></div>
                   <div class="mb-1 text-muted"><b>{{plus.fecha_nacimiento}}</b></div>
                   <p class="card-text mb-auto"><b>{{plus.biografia}}</b></p>
-                  <p class="card-text mb-auto"><b>{{user.email}}</b></p>
+                  <p class="card-text mb-auto"><b>{{user.email}}</b></p> 
                   <a href="{% url 'editarperfil' %}" class="stretched-link">Editar Perfil</a>
 
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                  <img class="float-left rounded-circle" src="{% static 'assets/img/03.jpg' %}" alt="" width="150" height="200">
+                  <img src="{{plus.foto_perfil.url}}" height="150" />
                 </div>
               </div>
             </div>

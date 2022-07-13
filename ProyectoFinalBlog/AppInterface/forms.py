@@ -1,3 +1,4 @@
+from wsgiref.handlers import format_date_time
 from django import forms
 from .models import Categoria, PlusUser
 from django.contrib.auth.forms import UserCreationForm
@@ -32,16 +33,16 @@ class UserEditForm(UserCreationForm):
 
 class EditPlusUser(forms.Form):
   email=forms.EmailField()
-  password1=forms.CharField(label="Contraseña",widget=forms.PasswordInput)
-  password2=forms.CharField(label="Confirmar Contraseña",widget=forms.PasswordInput)
+  #password1=forms.CharField(label="Contraseña",widget=forms.PasswordInput)
+  #password2=forms.CharField(label="Confirmar Contraseña",widget=forms.PasswordInput)
   nick_name=forms.CharField(max_length=20, required=False)
-  fecha_nacimiento=forms.DateTimeField(required=False)
-  foto_perfil=forms.ImageField(label="Imagen", required=False)
+  fecha_nacimiento=forms.DateField(label="Fecha: (dd/mm/aa)",required=False)
+  foto_perfil=forms.ImageField(label="Foto Perfil", required=False)
   biografia=forms.CharField(required=False)
 
   class Meta:
         model = PlusUser
-        fields = ['email','password1','password2','nick_name','fecha_nacimiento','foto_perfil','biografia']
+        fields = ['email','nick_name','fecha_nacimiento','foto_perfil','biografia']
 
 
 

@@ -58,28 +58,16 @@ def register_request(request):
   form=UserRegisterForm()
   return render(request,"AppInterface/register.html",{"form":form})
 
-def editar_perfil(request):
-
-  user = request.user
-
-  if request.method == "POST":
-    form= UserEditForm(request.POST)
-    if form.is_valid():
-      info=form.cleaned_data
-      user.email=info["email"]
-      user.password1=info["password1"]
-
-      user.save()
-
-      return redirect("inicio")
-  else:
-
-    form = UserEditForm(initial={"email":user.email})
-
-  return render(request,"AppInterface/editarperfil.html",{"form":form})
 
 def editar_PlusUser(request):
-  plus = request.user
+  user = request.user
+
+  try: 
+    plus_user=PlusUser.objects.get(usuario=user)
+  except:
+    plus_user=PlusUser()
+    plus_user.usuario=user
+    plus_user.save()
 
   if request.method == "POST":
 
@@ -88,25 +76,27 @@ def editar_PlusUser(request):
     if PlusForm.is_valid():
 
       info2=PlusForm.cleaned_data
-      plus.email=info2["email"]
-      plus.password1=info2["password1"]
-      plus.password2=info2["password2"]
-      plus.nick_name=info2["nick_name"]
-      plus.fecha_nacimiento=info2["fecha_nacimiento"]
-      plus.foto_perfil=info2["foto_perfil"]
-      plus.biografia=info2["biografia"]
-      plus.save()
+      user.email=info2["email"]
+      #user.password1=info2["password1"]
+      #user.password2=info2["password2"]
+      plus_user.nick_name=info2["nick_name"]
+      plus_user.fecha_nacimiento=info2["fecha_nacimiento"]
+      plus_user.foto_perfil=info2["foto_perfil"]
+      plus_user.biografia=info2["biografia"]
+
+      user.save()
+      plus_user.save()
       return redirect("inicio")
 
   else:
 
-    PlusForm=EditPlusUser(initial={"email":plus.email})
+    PlusForm=EditPlusUser(initial={"email":user.email,"nick_name":plus_user.nick_name,"fecha_nacimiento":plus_user.fecha_nacimiento,"foto_perfil":plus_user.foto_perfil,"biografia":plus_user.biografia,})
 
   return render(request,"AppInterface/editarperfil.html",{"PlusForm":PlusForm})
 
 def perfil(request):
-  #form = User.objects.all()
-  plus= PlusUser.objects.all()
+  user = request.user
+  plus= PlusUser.objects.get(usuario=user)
 
   return render(request,"AppInterface/perfil.html",{"plus":plus})
 

@@ -1,19 +1,19 @@
-{% extends "AppInterface\base.html" %}
+{% extends "AppInterface/base.html" %}
 
-{% load static %}
-{% block Titulo %} Editar Perfil {% endblock %}
+{% block Titulo %} Crear categoria {% endblock %}
 
-{% block Contenido %} 
-  <section class="bg-light py-5">
-    <div class="container px-5">
-      <h1> Editar Perfil "{{user.username}}" </h1>
-      <br>
-
-      <form action="" method="post">
-          {% csrf_token %}
-          {{PlusForm.as_p}}
-          <button type="submit">Guardar Cambios</button>
-      </form>
+{% block Contenido %}
+<div class="container px-5">
+  <div class="card">
+    <div class="card-header">
     </div>
-  </section>
-{% endblock%}
+    <div class="card-body">
+      <h4 class="card-title">Editando Perfil:</h4>
+
+      {% include "AppInterface/formperfil.html" %} 
+
+    </div>
+  
+  </div>
+</div>
+{% endblock %}
