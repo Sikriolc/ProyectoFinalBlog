@@ -1,10 +1,13 @@
 import re
+from django.http import Http404
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm #, UserCreationForm
 from django.contrib.auth import login,logout, authenticate 
 from AppNoticias.models import *
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 def inicio(request):
@@ -105,8 +108,15 @@ def perfil(request):
 def categorias(request):
 
   categorias= Categoria.objects.all()
+  page = request.GET.get('page',1)
 
-  return render(request,"AppInterface/categorias.html",{"categorias":categorias})
+  try:
+    paginator = Paginator(categorias,2)
+    categorias =paginator.page(page)
+  except:
+    raise Http404 
+
+  return render(request,"AppInterface/categorias.html",{"entity":categorias,"paginator":paginator})
 
 def categorias_crear(request):
 
