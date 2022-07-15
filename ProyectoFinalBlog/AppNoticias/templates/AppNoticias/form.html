@@ -10,16 +10,10 @@
       
       <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" alt="" width="50" srcset="">
   
-      {% elif campo.label == 'Categoria' %}
+      {% elif campo.label == 'Categoria' or campo.label == 'Cuerpo' %}
+
   
-        {% for categoria in noti %}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            {{categoria.titulo}}
-          </label>
-        </div>
-        {% endfor %}
+    {{ campo }}
   
       {% else %}
   

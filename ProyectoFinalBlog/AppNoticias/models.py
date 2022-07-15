@@ -16,4 +16,8 @@ class Noticia(models.Model):
   hora=models.TimeField(default=timezone.now)
   categoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
   imagen=models.ImageField(upload_to="imagenes/",verbose_name="imagen")
-  cuerpo=models.CharField(max_length=1500)
+  cuerpo=models.TextField()
+  
+  def __str__(self):
+    fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - " + "Autor: " + self.autor
+    return fila
