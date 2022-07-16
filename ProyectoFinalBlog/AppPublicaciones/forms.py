@@ -5,7 +5,7 @@ from django.forms.widgets import NumberInput
 
 
 class PublicForm(forms.ModelForm):
-  autor=forms.CharField(max_length=100)
+  #autor=forms.CharField(max_length=100)
   titulo=forms.CharField(max_length=100)
   subtitulo=forms.CharField(max_length=100)
   fecha=forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
@@ -15,4 +15,4 @@ class PublicForm(forms.ModelForm):
 
   class Meta:
         model = Publicacion
-        fields = ['autor','titulo','subtitulo','fecha','hora','imagen','cuerpo']
+        fields = ['titulo','subtitulo','fecha','hora','imagen','cuerpo']

@@ -1,0 +1,20 @@
+{% extends "AppInterface\base.html" %}
+
+{% block Titulo %} Crear Publicacion {% endblock %}
+
+{% block Contenido %}
+<div class="container px-5">
+  <div class="card">
+    <div class="card-header">
+      Editar una Publicacion
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Contenido de la Publicacion:</h4>
+
+      {% include "AppPublicaciones/form.html" %} 
+
+    </div>
+  
+  </div>
+</div>
+{% endblock %}

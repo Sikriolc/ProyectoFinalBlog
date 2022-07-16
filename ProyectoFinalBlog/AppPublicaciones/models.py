@@ -14,5 +14,5 @@ class Publicacion(models.Model):
   cuerpo=models.TextField()
   
   def __str__(self):
-    fila = "Titulo: " + self.titulo + " - " + "Autor: " + self.autor
+    fila = "Titulo: " + self.titulo + " - " + "Autor: " 
     return fila
