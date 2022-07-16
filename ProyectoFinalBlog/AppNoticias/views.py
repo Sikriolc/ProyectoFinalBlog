@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
+from django.db.models import Q
 import datetime
 from AppInterface.models import Categoria
-from django.db.models import Q
 from .forms import *
 from .urls import *
+
 
 
 # Create your views here.
@@ -31,6 +33,7 @@ def noticia_crear(request):
       cuerpo=info['cuerpo'],
       )
       NoticiaNueva.save()
+      messages.success(request, "Noticia Creada!")
       return redirect("noticias")
 
   NotiForm=NoticiaForm()
@@ -58,7 +61,7 @@ def noticia_editar(request,id):
 
       info2=NotiForm.cleaned_data
       noticia.titulo=info2["titulo"]
-      noticia.autor=info2["autor"]
+      #noticia.autor=info2["autor"]
       noticia.subtitulo=info2["subtitulo"]
       noticia.fecha=info2["fecha"]
       noticia.hora=info2["hora"]
@@ -66,7 +69,7 @@ def noticia_editar(request,id):
       noticia.categoria=info2["categoria"]
       noticia.cuerpo=info2["cuerpo"]
 
-      
+      messages.success(request, "Noticia Editada!")
       noticia.save()
       return redirect("inicio")
 
@@ -74,7 +77,7 @@ def noticia_editar(request,id):
 
     NotiForm=NoticiaForm(initial=
       {"titulo":noticia.titulo,
-      "autor":noticia.autor,
+      #"autor":noticia.autor,
       "subtitulo":noticia.subtitulo,
       "fecha":noticia.fecha,
       "hora":noticia.hora,
