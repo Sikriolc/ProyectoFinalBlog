@@ -8,7 +8,7 @@ from AppInterface.models import *
 # Create your models here.
 
 class Noticia(models.Model):
-  autor=models.CharField(max_length=100)#para enlazar con usuario logeado tirar ForeignKey, y pasarle captura del error a Lucas
+  autor=models.ForeignKey(User,blank=True,null=True, on_delete=models.SET_NULL)#para enlazar con usuario logeado tirar ForeignKey, y pasarle captura del error a Lucas
   titulo=models.CharField(max_length=100)
   subtitulo=models.CharField(max_length=100)
   fecha=models.DateField(default=timezone.now)
@@ -18,5 +18,5 @@ class Noticia(models.Model):
   cuerpo=models.TextField()
   
   def __str__(self):
-    fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - " + "Autor: " + self.autor
+    fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - " 
     return fila

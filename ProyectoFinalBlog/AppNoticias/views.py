@@ -3,6 +3,8 @@ import datetime
 from AppInterface.models import Categoria
 from django.db.models import Q
 from .forms import *
+from .urls import *
+
 
 # Create your views here.
 
@@ -10,9 +12,33 @@ def noticias(request):
   noticias=Noticia.objects.all()
   return render(request,"AppNoticias/noticias.html",{"noticias":noticias})
 
-
-
 def noticia_crear(request):
+  noti=Categoria()
+  categoria=noti
+  if request.method=='POST':
+    NotiForm=NoticiaForm(request.POST or None,request.FILES or None)
+
+    if NotiForm.is_valid():
+      info=NotiForm.cleaned_data
+      NoticiaNueva=Noticia(
+      autor=request.user,
+      titulo=info['titulo'],
+      subtitulo=info['subtitulo'],
+      fecha=info['fecha'],
+      hora=info['hora'],
+      categoria=info['categoria'],
+      imagen=info['imagen'],
+      cuerpo=info['cuerpo'],
+      )
+      NoticiaNueva.save()
+      return redirect("noticias")
+
+  NotiForm=NoticiaForm()
+  return render (request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})
+
+
+
+def noticia_editar(request):
   noti=Categoria()
   categoria=noti
 #contexto
@@ -55,7 +81,7 @@ def noticia_crear(request):
       "categoria":noti_crear.categoria,
       "cuerpo":noti_crear.cuerpo})
 
-  return render(request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})
+  return render(request,"AppNoticias/noticias_editar.html",{"NotiForm":NotiForm})
 
 def noticia_buscar(request):
   
