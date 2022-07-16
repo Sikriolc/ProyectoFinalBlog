@@ -20,8 +20,6 @@ def noticia_crear(request):
   except:
     noti_crear=Noticia()
     noti_crear.categoria=noti
-    noti.save()
-    noti_crear.save()
 
   if request.method == "POST":
 
@@ -30,7 +28,7 @@ def noticia_crear(request):
     if NotiForm.is_valid():
 
       info2=NotiForm.cleaned_data
-      noti.titulo=info2["titulo"]
+      noti_crear.titulo=info2["titulo"]
       noti_crear.autor=info2["autor"]
       noti_crear.subtitulo=info2["subtitulo"]
       noti_crear.fecha=info2["fecha"]
@@ -39,12 +37,12 @@ def noticia_crear(request):
       noti_crear.categoria=info2["categoria"]
       noti_crear.cuerpo=info2["cuerpo"]
 
-      noti.save()
+      
       noti_crear.save()
       return redirect("inicio")
 
   else:
 
-    NotiForm=NoticiaForm(initial={"titulo":noti.titulo,"autor":noti_crear.autor,"subtitulo":noti_crear.subtitulo,"fecha":noti_crear.fecha,"hora":noti_crear.hora,"imagen":noti_crear.imagen,"categoria":noti_crear.categoria,"cuerpo":noti_crear.cuerpo})
+    NotiForm=NoticiaForm(initial={"titulo":noti_crear.titulo,"autor":noti_crear.autor,"subtitulo":noti_crear.subtitulo,"fecha":noti_crear.fecha,"hora":noti_crear.hora,"imagen":noti_crear.imagen,"categoria":noti_crear.categoria,"cuerpo":noti_crear.cuerpo})
 
   return render(request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})

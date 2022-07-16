@@ -8,7 +8,7 @@ from AppInterface.models import *
 # Create your models here.
 
 class Noticia(models.Model):
-  autor=models.CharField(max_length=100)
+  autor=models.CharField(max_length=100)#para enlazar con usuario logeado tirar ForeignKey, y pasarle captura del error a Lucas
   titulo=models.CharField(max_length=100)
   subtitulo=models.CharField(max_length=100)
   fecha=models.DateField(default=timezone.now)

@@ -8,7 +8,7 @@ class NoticiaForm(forms.ModelForm):
   autor=forms.CharField(max_length=100)
   titulo=forms.CharField(max_length=100)
   subtitulo=forms.CharField(max_length=100)
-  fecha=forms.DateField(widget=NumberInput(attrs={'type': 'date'}))#https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html
+  fecha=forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
   hora=forms.TimeField(widget=NumberInput(attrs={'type': 'time'}))
   #categoria=forms.ForeignKey(Categoria, on_delete=models.CASCADE)
   imagen=forms.ImageField(label="Imagen Noticia", required=False)
