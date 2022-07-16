@@ -1,0 +1,43 @@
+{% extends "AppInterface\base.html" %}
+
+{% block Titulo %} Noticias {% endblock %}
+
+
+{% block Contenido %} 
+
+<div class="container px-5">
+    <body>
+        <h2>Buscar Noticia</h2>
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Buscar Noticia </label>
+              <input type="char" class="form-control" name="titulo" id="" aria-describedby="tituloHelp">
+              <div id="tituloHelp" class="form-text">Agregue palabra clave para realizar la busqueda</div>
+            </div>    
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        <br>
+        <h4>Resultado</h4>
+        <div class="container px-6">
+            {% for resultado in Titu %}
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">{{resultado.titulo}}</h6>
+                    <small>  </small> 
+                </div>
+                <p class="mb-1">{{resultado.cuerpo}}</p>
+                <small> </small>
+              </a>
+            </div>        
+            {% endfor %}
+  
+        </div>
+        <br>
+       
+    </body>
+  </div>
+
+{% endblock %}

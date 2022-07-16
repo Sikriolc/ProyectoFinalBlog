@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect
 import datetime
 from AppInterface.models import Categoria
+from django.db.models import Q
 from .forms import *
 
 # Create your views here.
 
 def noticias(request):
-    return render(request,'AppNoticias/noticias.html')
+  noticias=Noticia.objects.all()
+  return render(request,"AppNoticias/noticias.html",{"noticias":noticias})
 
 
 
@@ -53,3 +55,15 @@ def noticia_crear(request):
     "cuerpo":noti_crear.cuerpo})
 
   return render(request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})
+
+def noticia_buscar(request):
+  
+  if request.method=='POST':
+    titulos=request.POST["titulo"]
+    Titu=Noticia.objects.filter( Q(titulo__icontains=titulos) | Q(cuerpo__icontains=titulos)).values()
+    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+  
+  else:
+
+    Titu=[]
+    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
