@@ -19,15 +19,15 @@
                 <div class="col p-4 d-flex flex-column position-static">
                   <strong class="d-inline-block mb-2 text-primary"><h2>Hola, <b>{{user.username}}</b>!</h2></strong>
                   <h3 class="mb-0">Tu perfil</h3>
-                  <div class="mb-1 text-muted"><b>{{plus.nick_name}}</b></div>
-                  <div class="mb-1 text-muted"><b>{{plus.fecha_nacimiento}}</b></div>
-                  <p class="card-text mb-auto"><b>{{plus.biografia}}</b></p>
+                  <div class="mb-1 text-muted"><b>{{PlusForm.nick_name}}</b></div>
+                  <div class="mb-1 text-muted"><b>{{PlusForm.fecha_nacimiento}}</b></div>
+                  <p class="card-text mb-auto"><b>{{PlusForm.biografia}}</b></p>
                   <p class="card-text mb-auto"><b>{{user.email}}</b></p> 
                   <a href="{% url 'editarperfil' %}" class="stretched-link">Editar Perfil</a>
 
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                  <img src="{{plus.foto_perfil.url}}" height="150" />
+                  <img src="{{ PlusForm.foto_perfil.url }}" height="150" />
                 </div>
               </div>
             </div>

@@ -15,9 +15,6 @@ def inicio(request):
   return render(request, "AppInterface/inicio.html",{"categorias":categorias})
 
 #---------------------------------------
-def perfil(request):
-    user=User.objects.all()
-    return render(request, "AppInterface/perfil.html",{"user":user})
 
 def login_request(request):
   if request.method=="POST":
@@ -99,9 +96,15 @@ def editar_PlusUser(request):
 
 def perfil(request):
   user = request.user
-  plus= PlusUser.objects.get(usuario=user)
+  
+  try: 
+    plus_user=PlusUser.objects.get(usuario=user)
+  except:
+    plus_user=PlusUser()
+    plus_user.usuario=user
+    plus_user.save()
 
-  return render(request,"AppInterface/perfil.html",{"plus":plus})
+  return render(request,"AppInterface/perfil.html",{"PlusForm":plus_user})
 
 
 #---------------------------------------
