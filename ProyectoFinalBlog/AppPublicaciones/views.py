@@ -23,7 +23,8 @@ def publicacion_crear(request):
   PubliForm=PublicForm()
   return render (request,"AppPublicaciones/publicaciones_crear.html",{"PubliForm":PubliForm})
 
-def publicacion_editar(request):
+def publicacion_editar(request,id):
+  publicacion=Publicacion.objects.get(id=id)
   publi=User()
   autor=publi
 #contexto
@@ -36,31 +37,36 @@ def publicacion_editar(request):
 
   if request.method == "POST":
 
-    PubliForm=PublicForm(request.POST, request.FILES)
+    PubliForm=PublicForm(request.POST or None, request.FILES or None, instance=publicacion)
 
     if PubliForm.is_valid():
 
       info2=PubliForm.cleaned_data
-      publi_crear.titulo=info2["titulo"]
-      publi_crear.autor=info2["autor"]
-      publi_crear.subtitulo=info2["subtitulo"]
-      publi_crear.fecha=info2["fecha"]
-      publi_crear.hora=info2["hora"]
-      publi_crear.imagen=info2["imagen"]
-      publi_crear.cuerpo=info2["cuerpo"]
+      publicacion.titulo=info2["titulo"]
+      publicacion.autor=info2["autor"]
+      publicacion.subtitulo=info2["subtitulo"]
+      publicacion.fecha=info2["fecha"]
+      publicacion.hora=info2["hora"]
+      publicacion.imagen=info2["imagen"]
+      publicacion.cuerpo=info2["cuerpo"]
 
       
-      publi_crear.save()
+      publicacion.save()
       return redirect("inicio")
 
   else:
 
-    PubliForm=PublicForm(initial={"titulo":publi_crear.titulo,
-    "autor":publi_crear.autor,
-    "subtitulo":publi_crear.subtitulo,
-    "fecha":publi_crear.fecha,
-    "hora":publi_crear.hora,
-    "imagen":publi_crear.imagen,
-    "cuerpo":publi_crear.cuerpo})
+    PubliForm=PublicForm(initial={"titulo":publicacion.titulo,
+    "autor":publicacion.autor,
+    "subtitulo":publicacion.subtitulo,
+    "fecha":publicacion.fecha,
+    "hora":publicacion.hora,
+    "imagen":publicacion.imagen,
+    "cuerpo":publicacion.cuerpo})
 
   return render(request,"AppPublicaciones/publicaciones_editar.html",{"PubliForm":PubliForm})
+
+def publicacion_eliminar(request,id):
+  publicacion = Publicacion.objects.get(id=id)
+  publicacion.delete()
+  return redirect("publicaciones")

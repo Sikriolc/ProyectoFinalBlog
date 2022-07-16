@@ -31,6 +31,7 @@
               <section class="mb-5">
                   <p class="fs-5 mb-4">{{noticia.cuerpo}}</p>
                 </section>
+            <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticia.id %}" role="button"> Editar</a>|<a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticia.id %}"  role="button"> Eliminar</a>
             </article>
 
         {% endfor %}

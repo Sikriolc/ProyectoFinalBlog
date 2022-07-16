@@ -38,7 +38,8 @@ def noticia_crear(request):
 
 
 
-def noticia_editar(request):
+def noticia_editar(request,id):
+  noticia=Noticia.objects.get(id=id)
   noti=Categoria()
   categoria=noti
 #contexto
@@ -51,35 +52,35 @@ def noticia_editar(request):
 
   if request.method == "POST":
 
-    NotiForm=NoticiaForm(request.POST, request.FILES)
+    NotiForm=NoticiaForm(request.POST, request.FILES, instance=noticia)
 
     if NotiForm.is_valid():
 
       info2=NotiForm.cleaned_data
-      noti_crear.titulo=info2["titulo"]
-      noti_crear.autor=info2["autor"]
-      noti_crear.subtitulo=info2["subtitulo"]
-      noti_crear.fecha=info2["fecha"]
-      noti_crear.hora=info2["hora"]
-      noti_crear.imagen=info2["imagen"]
-      noti_crear.categoria=info2["categoria"]
-      noti_crear.cuerpo=info2["cuerpo"]
+      noticia.titulo=info2["titulo"]
+      noticia.autor=info2["autor"]
+      noticia.subtitulo=info2["subtitulo"]
+      noticia.fecha=info2["fecha"]
+      noticia.hora=info2["hora"]
+      noticia.imagen=info2["imagen"]
+      noticia.categoria=info2["categoria"]
+      noticia.cuerpo=info2["cuerpo"]
 
       
-      noti_crear.save()
+      noticia.save()
       return redirect("inicio")
 
   else:
 
     NotiForm=NoticiaForm(initial=
-      {"titulo":noti_crear.titulo,
-      "autor":noti_crear.autor,
-      "subtitulo":noti_crear.subtitulo,
-      "fecha":noti_crear.fecha,
-      "hora":noti_crear.hora,
-      "imagen":noti_crear.imagen,
-      "categoria":noti_crear.categoria,
-      "cuerpo":noti_crear.cuerpo})
+      {"titulo":noticia.titulo,
+      "autor":noticia.autor,
+      "subtitulo":noticia.subtitulo,
+      "fecha":noticia.fecha,
+      "hora":noticia.hora,
+      "imagen":noticia.imagen,
+      "categoria":noticia.categoria,
+      "cuerpo":noticia.cuerpo})
 
   return render(request,"AppNoticias/noticias_editar.html",{"NotiForm":NotiForm})
 
@@ -94,3 +95,8 @@ def noticia_buscar(request):
 
     Titu=[]
     return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+
+def noticia_eliminar(request,id):
+  noticia = Noticia.objects.get(id=id)
+  noticia.delete()
+  return redirect("noticias")
