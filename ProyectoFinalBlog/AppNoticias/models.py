@@ -3,7 +3,6 @@ from xmlrpc.client import DateTime
 from django.utils import timezone
 from django.db import models
 from AppInterface.models import *
-from multiselectfield import MultiSelectField
 
 
 # Create your models here.
