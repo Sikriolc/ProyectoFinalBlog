@@ -43,13 +43,14 @@ def noticia_crear(request):
 
   else:
 
-    NotiForm=NoticiaForm(initial={"titulo":noti_crear.titulo,
-    "autor":noti_crear.autor,
-    "subtitulo":noti_crear.subtitulo,
-    "fecha":noti_crear.fecha,
-    "hora":noti_crear.hora,
-    "imagen":noti_crear.imagen,
-    "categoria":noti_crear.categoria,
-    "cuerpo":noti_crear.cuerpo})
+    NotiForm=NoticiaForm(initial=
+      {"titulo":noti_crear.titulo,
+      "autor":noti_crear.autor,
+      "subtitulo":noti_crear.subtitulo,
+      "fecha":noti_crear.fecha,
+      "hora":noti_crear.hora,
+      "imagen":noti_crear.imagen,
+      "categoria":noti_crear.categoria,
+      "cuerpo":noti_crear.cuerpo})
 
   return render(request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})
