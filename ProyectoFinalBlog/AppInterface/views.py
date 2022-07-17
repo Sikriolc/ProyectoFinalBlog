@@ -11,8 +11,8 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def inicio(request):
-  categorias=Categoria.objects.all()[0:2]
-  return render(request, "AppInterface/inicio.html",{"categorias":categorias})
+  noticias=Noticia.objects.all()[0:2]
+  return render(request, "AppInterface/inicio.html",{"noticias":noticias})
 
 #---------------------------------------
 

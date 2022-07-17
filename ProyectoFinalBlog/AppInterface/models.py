@@ -10,7 +10,7 @@ class Categoria(models.Model):
   icono = models.ImageField(upload_to="imagenes/",verbose_name="icono",null=True)
 
   def __str__(self):
-    fila = "Titulo: " + self.titulo + "-" + self.detalle
+    fila = self.titulo
     return fila
 
   def delete(self, using=None, keep_parents=False):
