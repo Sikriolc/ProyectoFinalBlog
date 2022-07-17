@@ -11,6 +11,7 @@ urlpatterns = [
     path('editarnoticia/<int:id>', views.noticia_editar, name="editarnoticia"),
     path('buscarnoticia', views.noticia_buscar, name="buscarnoticia"),
     path('eliminarnoticia/<int:id>', views.noticia_eliminar, name="eliminarnoticia"),
+    
 
 
 ]

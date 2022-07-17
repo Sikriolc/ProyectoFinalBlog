@@ -71,7 +71,7 @@ def noticia_editar(request,id):
 
       messages.success(request, "Noticia Editada!")
       noticia.save()
-      return redirect("inicio")
+      return redirect("noticias")
 
   else:
 
@@ -103,3 +103,4 @@ def noticia_eliminar(request,id):
   noticia = Noticia.objects.get(id=id)
   noticia.delete()
   return redirect("noticias")
+

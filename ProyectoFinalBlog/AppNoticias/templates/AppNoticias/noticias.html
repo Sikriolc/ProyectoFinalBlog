@@ -34,7 +34,7 @@
              <h2 class="text-center">Noticias</h2>
           </div>
         
-        {% for noticia in noticias%}
+        {% for noticia in noticias %}
           <article>
               <!-- Post header-->
               <header class="mb-4">
@@ -46,12 +46,13 @@
                   <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'categorias' %}">{{noticia.categoria}}</a>
               </header>
               <!-- Preview image figure-->
-              <figure class="mb-4"><img class="img-fluid rounded" src="{{noticia.imagen}}" alt="" /></figure>
+              <figure class="mb-4"><img class="img-fluid rounded" src="{{noticia.imagen.url}}" alt="" /></figure>
               <!-- Post content-->
               <section class="mb-5">
                   <p class="fs-5 mb-4">{{noticia.cuerpo}}</p>
                 </section>
-            <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticia.id %}" role="button"> Editar</a>|<a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticia.id %}" onclick="noticia_eliminar({{ p.id }})" role="button"> Eliminar</a>
+            <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticia.id %}" role="button"> Editar</a>|
+            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticia.id %}" onclick="noticia_eliminar({ id })" role="button"> Eliminar</a>
             </article>
 
         {% endfor %}
