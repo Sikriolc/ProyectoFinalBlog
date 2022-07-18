@@ -1,14 +1,18 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
 
 # Create your views here.
-
+@login_required
 def publicaciones(request):
   public=Publicacion.objects.all()
   return render(request,'AppPublicaciones/publicaciones.html',{"public":public})
 
 
+@login_required
 def publicacion_crear(request):
 
   if request.method=='POST':
@@ -23,6 +27,7 @@ def publicacion_crear(request):
   PubliForm=PublicForm()
   return render (request,"AppPublicaciones/publicaciones_crear.html",{"PubliForm":PubliForm})
 
+@login_required
 def publicacion_editar(request,id):
   publicacion=Publicacion.objects.get(id=id)
   publi=User()
@@ -66,17 +71,18 @@ def publicacion_editar(request,id):
 
   return render(request,"AppPublicaciones/publicaciones_editar.html",{"PubliForm":PubliForm})
 
+@login_required
 def publicacion_buscar(request):
   
   if request.method=='POST':
     titulos=request.POST["titulo"]
-    Titu=Noticia.objects.filter( Q(titulo__icontains=titulos) | Q(cuerpo__icontains=titulos)).values()
-    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+    Titu=Publicacion.objects.filter( Q(titulo__icontains=titulos) | Q(cuerpo__icontains=titulos)).values()
+    return render(request,"AppPublicaciones/publicaciones_buscar.html",{'Titu':Titu})
   
   else:
 
     Titu=[]
-    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+    return render(request,"AppPublicaciones/publicaciones_buscar.html",{'Titu':Titu})
 
 def publicacion_eliminar(request,id):
   publicacion = Publicacion.objects.get(id=id)

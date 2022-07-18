@@ -95,6 +95,7 @@ def editar_PlusUser(request):
 
   return render(request,"AppInterface/editarperfil.html",{"PlusForm":PlusForm})
 
+@login_required
 def perfil(request):
   user = request.user
   
@@ -151,7 +152,7 @@ def nosotros(request):
   return render(request,"AppInterface/nosotros.html",)
 
 #---------------------------------------
-
+@login_required
 def contacto(request):
 
   return render(request,"AppInterface/contacto.html",)
