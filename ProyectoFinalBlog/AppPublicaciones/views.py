@@ -66,6 +66,18 @@ def publicacion_editar(request,id):
 
   return render(request,"AppPublicaciones/publicaciones_editar.html",{"PubliForm":PubliForm})
 
+def publicacion_buscar(request):
+  
+  if request.method=='POST':
+    titulos=request.POST["titulo"]
+    Titu=Noticia.objects.filter( Q(titulo__icontains=titulos) | Q(cuerpo__icontains=titulos)).values()
+    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+  
+  else:
+
+    Titu=[]
+    return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
+
 def publicacion_eliminar(request,id):
   publicacion = Publicacion.objects.get(id=id)
   publicacion.delete()

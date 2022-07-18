@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm #, UserCreationForm
 from django.contrib.auth import login,logout, authenticate 
 from AppNoticias.models import *
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -58,7 +59,7 @@ def register_request(request):
   form=UserRegisterForm()
   return render(request,"AppInterface/register.html",{"form":form})
 
-
+@login_required
 def editar_PlusUser(request):
   user = request.user
 

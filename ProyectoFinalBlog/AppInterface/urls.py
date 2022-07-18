@@ -5,10 +5,11 @@ from . import views
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
+
 urlpatterns = [
     path('', views.inicio, name="inicio"),
     path('inicio', views.inicio, name="inicio"),
-    path('login', views.login_request, name="login"),
+    path('accounts/login/', views.login_request, name="login"),
     path('logout', views.logout_request, name="logout"),
     path('register', views.register_request, name="register"),
     path('editarperfil', views.editar_PlusUser, name="editarperfil"),
