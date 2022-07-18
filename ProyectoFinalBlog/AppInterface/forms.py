@@ -3,6 +3,7 @@ from django import forms
 from .models import Categoria, PlusUser
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms.widgets import NumberInput
 
 class CategoriaForm(forms.ModelForm):
   class Meta:
@@ -36,7 +37,7 @@ class EditPlusUser(forms.Form):
   #password1=forms.CharField(label="Contraseña",widget=forms.PasswordInput)
   #password2=forms.CharField(label="Confirmar Contraseña",widget=forms.PasswordInput)
   nick_name=forms.CharField(max_length=20, required=False)
-  fecha_nacimiento=forms.DateField(label="Fecha: (dd/mm/aa)",required=False)
+  fecha_nacimiento=forms.DateField(widget=NumberInput(attrs={'type': 'date'}),required=False)
   foto_perfil=forms.ImageField(label="Foto Perfil", required=False)
   biografia=forms.CharField(required=False)
 
