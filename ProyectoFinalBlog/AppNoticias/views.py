@@ -102,5 +102,6 @@ def noticia_buscar(request):
 def noticia_eliminar(request,id):
   noticia = Noticia.objects.get(id=id)
   noticia.delete()
+  messages.success(request, "Noticia Eliminada!")
   return redirect("noticias")
 

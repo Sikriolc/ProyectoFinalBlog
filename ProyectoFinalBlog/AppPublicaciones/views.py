@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.db.models import Q
 
 
@@ -22,6 +23,7 @@ def publicacion_crear(request):
       info=PubliForm.cleaned_data
       PublicacionNueva=Publicacion(titulo=info['titulo'],subtitulo=info['subtitulo'],fecha=info['fecha'],hora=info['hora'],imagen=info['imagen'],cuerpo=info['cuerpo'],autor=request.user)
       PublicacionNueva.save()
+      messages.success(request, "Publicacion Creada!")
       return redirect("publicaciones")
 
   PubliForm=PublicForm()
@@ -57,6 +59,7 @@ def publicacion_editar(request,id):
 
       
       publicacion.save()
+      messages.success(request, "Publicacion Editada con Exito!")
       return redirect("inicio")
 
   else:
@@ -87,4 +90,5 @@ def publicacion_buscar(request):
 def publicacion_eliminar(request,id):
   publicacion = Publicacion.objects.get(id=id)
   publicacion.delete()
+  messages.success(request, "Publicacion eliminada correctamente!")
   return redirect("publicaciones")

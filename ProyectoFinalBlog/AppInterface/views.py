@@ -8,6 +8,8 @@ from django.contrib.auth import login,logout, authenticate
 from AppNoticias.models import *
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -51,9 +53,15 @@ def register_request(request):
 
       form.save()
       user=authenticate(username=username, password=password)
+      messages.success(request, "Registrado con Exito!")
 
+      if user is not None:
+        login(request, user)
+        return redirect("inicio")
+      else:
+        return redirect("login")
 
-      return redirect("inicio")
+      #return redirect("inicio")
     return render(request,"AppInterface/register.html",{"form":form})
 
   form=UserRegisterForm()
@@ -87,6 +95,7 @@ def editar_PlusUser(request):
 
       user.save()
       plus_user.save()
+      messages.success(request, "Editado a la Perfeccion querido Gamer!!")
       return redirect("inicio")
 
   else:
@@ -128,6 +137,7 @@ def categorias_crear(request):
   formulario = CategoriaForm(request.POST or None,request.FILES or None)
   if formulario.is_valid():
     formulario.save()
+    messages.success(request, "Categoria Creada!")
     return redirect("categorias")
 
   return render (request,"AppInterface/categorias_crear.html",{"formulario":formulario})
@@ -137,12 +147,14 @@ def categorias_editar(request,id):
   formulario = CategoriaForm(request.POST or None,request.FILES or None,instance=categoria)
   if formulario.is_valid() and request.POST:
     formulario.save()
+    messages.success(request, "Categoria editada con Exito!")
     return redirect("categorias")
   return render (request,"AppInterface/categorias_editar.html",{"formulario":formulario})
 
 def categorias_eliminar(request,id):
   categoria = Categoria.objects.get(id=id)
   categoria.delete()
+  messages.success(request, "Categoria eliminada correctamente!")
   return redirect("categorias")
 
 #---------------------------------------
