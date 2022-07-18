@@ -4,9 +4,14 @@
 {% block Titulo %} Registrarse {% endblock %}
 
 {% block Contenido %} 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Resgistar</button>
-    </form>
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Resgistar</button>
+        </form>
+    </div>
+</section>
+
 {% endblock%}
