@@ -14,8 +14,11 @@ from django.contrib import messages
 # Create your views here.
 
 def inicio(request):
+  user=request.user
   noticias=Noticia.objects.all()[0:2]
-  return render(request, "AppInterface/inicio.html",{"noticias":noticias})
+  PlusForm=PlusUser.objects.get(usuario=user)
+
+  return render(request, "AppInterface/inicio.html",{"noticias":noticias,"PlusForm":PlusForm})
 
 #---------------------------------------
 

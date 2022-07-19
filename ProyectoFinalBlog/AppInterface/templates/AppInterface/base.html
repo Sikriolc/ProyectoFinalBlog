@@ -71,6 +71,7 @@
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                           </ul>
                         </li>
+                        <img class="rounded" src="{{ PlusForm.foto_perfil.url }}" alt="" srcset="" style="height: 40px;">
                         <li class="nav-item"><p class="text-light my-2 mx-2"> Hola, <b>{{user.username}}</b>!</p></li>
                         <li class="nav-item"><a class="btn btn-danger mx-2" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                         
