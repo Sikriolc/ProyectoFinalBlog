@@ -9,6 +9,7 @@ from AppNoticias.models import *
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 # Create your views here.
@@ -16,9 +17,10 @@ from django.contrib import messages
 def inicio(request):
   user=request.user
   noticias=Noticia.objects.all()[0:4]
-  PlusForm=PlusUser.objects.get(usuario=user)
+  
+  #PlusForm=PlusUser.objects.get(usuario=user) ,"PlusForm":PlusForm
 
-  return render(request, "AppInterface/inicio.html",{"noticias":noticias,"PlusForm":PlusForm})
+  return render(request, "AppInterface/inicio.html",{"noticias":noticias})
 
 #---------------------------------------
 
@@ -135,6 +137,7 @@ def categorias(request):
 
   return render(request,"AppInterface/categorias.html",{"entity":categorias,"paginator":paginator})
 
+@staff_member_required
 def categorias_crear(request):
 
   formulario = CategoriaForm(request.POST or None,request.FILES or None)
