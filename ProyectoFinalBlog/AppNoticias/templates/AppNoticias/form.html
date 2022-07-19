@@ -10,12 +10,13 @@
       
       <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" alt="" width="50" srcset="">
   
-      {% elif campo.label == 'Categoria' or campo.label == 'Cuerpo' %}
-
+      {% elif campo.label == 'Categoria' %}
   
-    {{ campo }}
+        {{ campo }}
   
       {% endif %}
+
+      {% if campo.label != 'Categoria' %}
   
         <input 
         type="{{ campo.field.widget.input_type }}"
@@ -25,7 +26,8 @@
         aria-describedby="helpId" 
         placeholder="{{ campo.label }}"
         value="{{ campo.value | default:'' }}">
-  
+
+      {% endif %}      
       
       
     </div>

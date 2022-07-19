@@ -15,7 +15,7 @@ from django.contrib import messages
 
 def inicio(request):
   user=request.user
-  noticias=Noticia.objects.all()[0:2]
+  noticias=Noticia.objects.all()[0:4]
   PlusForm=PlusUser.objects.get(usuario=user)
 
   return render(request, "AppInterface/inicio.html",{"noticias":noticias,"PlusForm":PlusForm})

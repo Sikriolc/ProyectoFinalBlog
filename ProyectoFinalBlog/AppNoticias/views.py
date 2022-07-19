@@ -10,9 +10,17 @@ from .urls import *
 
 # Create your views here.
 
-def noticias(request,id):
+def noticias (request):
+  noticias=Noticia.objects.all()
+  noti1 = noticias[len(noticias)-1]
+  noti2 = noticias[len(noticias)-2]
+  noti3 = noticias[len(noticias)-3]
+
+  return render (request,"AppNoticias/noticias.html",{"noti1":noti1,"noti2":noti2,"noti3":noti3,"noticias":noticias})
+
+def noticiasdetalle(request,id):
   noticias=Noticia.objects.get(id=id)
-  return render(request,"AppNoticias/noticias.html",{"noticias":noticias})
+  return render(request,"AppNoticias/noticiasdetalle.html",{"noticias":noticias})
 
 def noticia_crear(request):
   noti=Categoria()
