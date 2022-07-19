@@ -10,8 +10,8 @@ from .urls import *
 
 # Create your views here.
 
-def noticias(request):
-  noticias=Noticia.objects.all()
+def noticias(request,id):
+  noticias=Noticia.objects.get(id=id)
   return render(request,"AppNoticias/noticias.html",{"noticias":noticias})
 
 def noticia_crear(request):

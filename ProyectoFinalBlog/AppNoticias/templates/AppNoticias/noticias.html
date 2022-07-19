@@ -35,28 +35,28 @@
              <h2 class="text-center">Noticias</h2>
           </div>
         
-        {% for noticia in noticias %}
+        
           <article>
               <!-- Post header-->
               <header class="mb-4">
                   <!-- Post title-->
-                  <h1 class="fw-bolder mb-1">{{noticia.titulo}}</h1>
+                  <h1 class="fw-bolder mb-1">{{noticias.titulo}}</h1>
                   <!-- Post meta content-->
-                  <div class="text-muted fst-italic mb-2">Posted on {{noticia.fecha}}</div>
+                  <div class="text-muted fst-italic mb-2">Posted on {{noticias.fecha}}</div>
                   <!-- Post categories-->
                   <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'categorias' %}">{{noticia.categoria}}</a>
               </header>
               <!-- Preview image figure-->
-              <figure class="mb-4"><img class="img-fluid rounded" src="{{noticia.imagen.url}}" alt="" /></figure>
+              <figure class="mb-4"><img class="img-fluid rounded" src="{{noticias.imagen.url}}" alt="" /></figure>
               <!-- Post content-->
               <section class="mb-5">
                   <p class="fs-5 mb-4">{{noticia.cuerpo}}</p>
                 </section>
-            <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticia.id %}" role="button"> Editar</a>|
-            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticia.id %}" onclick="noticia_eliminar({ id })" role="button"> Eliminar</a>
+            <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticias.id %}" role="button"> Editar</a>|
+            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticias.id %}" onclick="noticia_eliminar({ id })" role="button"> Eliminar</a>
             </article>
 
-        {% endfor %}
+        
                   <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
                   <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
                   <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>

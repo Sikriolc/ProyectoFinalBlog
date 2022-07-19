@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
-    path('noticias', views.noticias, name="noticias"),
+    path('noticias/<int:id>', views.noticias, name="noticias"),
     path('crearnoticia', views.noticia_crear, name="crearnoticia"),
     path('editarnoticia/<int:id>', views.noticia_editar, name="editarnoticia"),
     path('buscarnoticia', views.noticia_buscar, name="buscarnoticia"),
