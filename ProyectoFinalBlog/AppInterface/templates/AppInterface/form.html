@@ -21,7 +21,7 @@
       </div>
       {% endfor %}
 
-    {% else %}
+      {% endif %}
 
       <input 
       type="{{ campo.field.widget.input_type }}"
@@ -32,7 +32,7 @@
       placeholder="{{ campo.label }}"
       value="{{ campo.value | default:'' }}">
 
-    {% endif %}
+    
     
   </div>
   <div class="col-12 help-text"> {{ campo.errors }} </div>  
