@@ -1,3 +1,8 @@
+{% load static %}
+<script>window.CKEDITOR_BASEPATH='/static/ckeditor/ckeditor/';</script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js'%}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js'%}"></script>
+
 <form enctype="multipart/form-data" method="post" action="" >
     {% csrf_token %}
   
@@ -13,10 +18,15 @@
       {% elif campo.label == 'Categoria' %}
   
         {{ campo }}
+
+      {% elif campo.label == 'Cuerpo' %}
+
+        
+        {{ campo }}
   
       {% endif %}
 
-      {% if campo.label != 'Categoria' %}
+      {% if campo.label != 'Categoria' and campo.label != 'Cuerpo' %}
   
         <input 
         type="{{ campo.field.widget.input_type }}"
@@ -34,5 +44,13 @@
     <div class="col-12 help-text"> {{ campo.errors }} </div>  
     {% endfor %}
     <input name="" id="" class="btn btn-success" type="submit" value="Ingresar">
+
+    <script>
+      ClassicEditor
+          .create( document.querySelector( '#editor' ) )
+          .catch( error => {
+              console.error( error );
+          } );
+    </script>
   
   </form>

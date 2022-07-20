@@ -2,6 +2,7 @@ import datetime
 from xmlrpc.client import DateTime
 from django.utils import timezone
 from django.db import models
+from ckeditor.fields import RichTextField
 from AppInterface.models import *
 
 
@@ -15,8 +16,8 @@ class Noticia(models.Model):
   hora=models.TimeField(default=timezone.now)
   categoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
   imagen=models.ImageField(upload_to="imagenes/",verbose_name="imagen")
-  cuerpo=models.TextField()
+  cuerpo=RichTextField(blank=True, null=True)
   
   def __str__(self):
-    fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - " 
+    fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - "
     return fila

@@ -42,7 +42,7 @@
                           Noticias
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                            
-                          <li><a class="dropdown-item" href="noticias">Ver Noticias</a></li>
+                          <li><a class="dropdown-item" href="{% url 'noticias' %}">Ver Noticias</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="{% url 'crearnoticia' %}">Crear nueva Noticia</a></li>
                           <li><a class="dropdown-item" href="{% url 'buscarnoticia' %}">Buscar Noticia</a></li>
@@ -63,7 +63,7 @@
                       <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                       {% if user.is_authenticated %}
                         <li class="nav-item dropdown">  
-                          <a class="nav-link dropdown-toggle active" href="categorias" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <a class="nav-link dropdown-toggle active" href="{% url 'categorias' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Perfil
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                            
