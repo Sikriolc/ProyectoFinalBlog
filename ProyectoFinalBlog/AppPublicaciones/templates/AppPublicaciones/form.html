@@ -19,9 +19,16 @@
 
   
         {{ campo }}
+
+      {% elif campo.label == 'Cuerpo' %}
+
+        
+        {{ campo }}
+      
   
       {% endif %}
-  
+
+      {% if campo.label != 'Categoria' and campo.label != 'Cuerpo' %}
         <input 
         type="{{ campo.field.widget.input_type }}"
         class="form-control" 
@@ -30,7 +37,8 @@
         aria-describedby="helpId" 
         placeholder="{{ campo.label }}"
         value="{{ campo.value | default:'' }}">
-  
+      
+      {% endif %}
       
       
     </div>
@@ -38,6 +46,12 @@
     {% endfor %}
     <input name="" id="" class="btn btn-success" type="submit" value="Ingresar">
 
-    { }
+    <script>
+      ClassicEditor
+          .create( document.querySelector( '#editor' ) )
+          .catch( error => {
+              console.error( error );
+          } );
+    </script>
   
   </form>

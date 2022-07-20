@@ -50,7 +50,7 @@ def publicacion_editar(request,id):
 
       info2=PubliForm.cleaned_data
       publicacion.titulo=info2["titulo"]
-      publicacion.autor=info2["autor"]
+      #publicacion.autor=info2["autor"]
       publicacion.subtitulo=info2["subtitulo"]
       publicacion.fecha=info2["fecha"]
       publicacion.hora=info2["hora"]
@@ -65,7 +65,7 @@ def publicacion_editar(request,id):
   else:
 
     PubliForm=PublicForm(initial={"titulo":publicacion.titulo,
-    "autor":publicacion.autor,
+    #"autor":publicacion.autor,
     "subtitulo":publicacion.subtitulo,
     "fecha":publicacion.fecha,
     "hora":publicacion.hora,
