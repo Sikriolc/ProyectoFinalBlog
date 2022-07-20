@@ -17,11 +17,19 @@ from django.db.models import Q
 
 def inicio(request):
   user=request.user
-  noticias=Noticia.objects.all()[0:4]
+  noticias=Noticia.objects.all()
+
+  page = request.GET.get('page',1)
+
+  try:
+    paginator = Paginator(noticias,4)
+    noticias =paginator.page(page)
+  except:
+    raise Http404
   
   #PlusForm=PlusUser.objects.get(usuario=user) ,"PlusForm":PlusForm
 
-  return render(request, "AppInterface/inicio.html",{"noticias":noticias})
+  return render(request, "AppInterface/inicio.html",{"entity":noticias,"paginator":paginator})
 
 #---------------------------------------
 
