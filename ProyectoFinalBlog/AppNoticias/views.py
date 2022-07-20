@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 import datetime
 from AppInterface.models import Categoria
+from django.contrib.admin.views.decorators import staff_member_required
 from .forms import *
 from .urls import *
 
@@ -22,6 +23,7 @@ def noticiasdetalle(request,id):
   noticias=Noticia.objects.get(id=id)
   return render(request,"AppNoticias/noticiasdetalle.html",{"noticias":noticias})
 
+@staff_member_required
 def noticia_crear(request):
   noti=Categoria()
   categoria=noti
@@ -48,7 +50,7 @@ def noticia_crear(request):
   return render (request,"AppNoticias/noticias_crear.html",{"NotiForm":NotiForm})
 
 
-
+@staff_member_required
 def noticia_editar(request,id):
   noticia=Noticia.objects.get(id=id)
   noti=Categoria()
@@ -107,6 +109,7 @@ def noticia_buscar(request):
     Titu=[]
     return render(request,"AppNoticias/noticia_buscar.html",{'Titu':Titu})
 
+@staff_member_required
 def noticia_eliminar(request,id):
   noticia = Noticia.objects.get(id=id)
   noticia.delete()

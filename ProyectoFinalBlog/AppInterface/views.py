@@ -157,6 +157,7 @@ def categorias_crear(request):
 
   return render (request,"AppInterface/categorias_crear.html",{"formulario":formulario})
 
+@staff_member_required
 def categorias_editar(request,id):
   categoria= Categoria.objects.get(id=id)
   formulario = CategoriaForm(request.POST or None,request.FILES or None,instance=categoria)
@@ -178,6 +179,7 @@ def categoria_buscar(request):
     Titu=[]
     return render(request,"AppInterface/categorias_buscar.html",{'Titu':Titu})
 
+@staff_member_required
 def categorias_eliminar(request,id):
   categoria = Categoria.objects.get(id=id)
   categoria.delete()
