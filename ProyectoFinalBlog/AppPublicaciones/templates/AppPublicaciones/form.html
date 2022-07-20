@@ -1,3 +1,8 @@
+{% load static %}
+<script>window.CKEDITOR_BASEPATH='/static/ckeditor/ckeditor/';</script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js'%}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js'%}"></script>
+
 <form enctype="multipart/form-data" method="post" action="" >
     {% csrf_token %}
   
@@ -10,10 +15,10 @@
       
       <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" alt="" width="50" srcset="">
   
-      {% elif campo.label == 'Categoria' or campo.label == 'Cuerpo' %}
+      {% elif campo.label == 'Categoria' %}
 
   
-    {{ campo }}
+        {{ campo }}
   
       {% endif %}
   
@@ -32,5 +37,7 @@
     <div class="col-12 help-text"> {{ campo.errors }} </div>  
     {% endfor %}
     <input name="" id="" class="btn btn-success" type="submit" value="Ingresar">
+
+    { }
   
   </form>

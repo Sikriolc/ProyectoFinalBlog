@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'multiselectfield',
+    'ckeditor',
 
     'AppInterface',
     'AppNoticias',
