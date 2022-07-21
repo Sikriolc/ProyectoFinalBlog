@@ -116,7 +116,7 @@ def editar_PlusUser(request):
 
     PlusForm=EditPlusUser(initial={"email":user.email,"nick_name":plus_user.nick_name,"fecha_nacimiento":plus_user.fecha_nacimiento,"foto_perfil":plus_user.foto_perfil,"biografia":plus_user.biografia,})
 
-  return render(request,"AppInterface/editarperfil.html",{"PlusForm":PlusForm})
+  return render(request,"AppInterface/editarperfil.html",{"formulario":PlusForm})
 
 @login_required
 def perfil(request):
