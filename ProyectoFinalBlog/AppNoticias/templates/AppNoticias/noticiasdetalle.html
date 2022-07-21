@@ -50,7 +50,7 @@
               <figure class="mb-4"><img class="img-fluid rounded" src="{{noticias.imagen.url}}" alt="" /></figure>
               <!-- Post content-->
               <section class="mb-5">
-                  <p class="fs-5 mb-4">{{noticias.cuerpo}}</p>
+                  <p class="fs-5 mb-4">{{noticias.cuerpo|safe}}</p>
                 </section>
             <a name="" id="" class="btn btn-info" href="{% url 'editarnoticia' noticias.id %}" role="button"> Editar</a>|
             <a name="" id="" class="btn btn-danger" href="{% url 'eliminarnoticia' noticias.id %}" onclick="noticia_eliminar({ id })" role="button"> Eliminar</a>
