@@ -76,10 +76,10 @@ def register_request(request):
         return redirect("login")
 
       #return redirect("inicio")
-    return render(request,"AppInterface/register.html",{"form":form})
+    return render(request,"AppInterface/register.html",{"formulario":form})
 
   form=UserRegisterForm()
-  return render(request,"AppInterface/register.html",{"form":form})
+  return render(request,"AppInterface/register.html",{"formulario":form})
 
 @login_required
 def editar_PlusUser(request):

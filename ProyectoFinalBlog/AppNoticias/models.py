@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.db import models
 from ckeditor.fields import RichTextField
 from AppInterface.models import *
+from django.contrib.contenttypes.fields import ContentType
 
 
 # Create your models here.
@@ -21,3 +22,5 @@ class Noticia(models.Model):
   def __str__(self):
     fila = "Titulo: " + self.titulo + "-" + "Subtitulo: "+self.subtitulo + " - "
     return fila
+
+
