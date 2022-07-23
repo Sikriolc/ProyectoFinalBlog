@@ -3,11 +3,12 @@
 {% block Titulo %} Publicaciones {% endblock %}
 
 {% block Contenido %} 
-
+<br>
 
 {% for publicacion in public %}
 
-<div class="container">
+<div class="container" >
+  <div class="card">
   <div class="row h-100px">
     <div class="col w-25 h-25 d-inline-block">
       <div class="row">
@@ -23,11 +24,12 @@
           <p class="card-text">{{publicacion.cuerpo|safe}}</p>
       </div>
       
-        <button type="button" class="btn btn-info btn-sm" href="{% url 'editarpublicacion' publicacion.id %}">Editar</button>
-        <button type="button" class="btn btn-danger btn-sm" href="{% url 'eliminarpublicacion' publicacion.id %}">Eliminar</button>
+      <a name="" id="" class="btn btn-info" href="{% url 'editarpublicacion' publicacion.id %}" role="button"> Editar</a>|
+      <a name="" id="" class="btn btn-danger" href="{% url 'eliminarpublicacion' publicacion.id %}" onclick="noticia_eliminar({ id })" role="button"> Eliminar</a>
       <br>
       
     </div>
+  </div>
   </div>
   <br>
   
