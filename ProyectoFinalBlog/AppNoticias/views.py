@@ -9,7 +9,7 @@ from .urls import *
 
 
 
-# Create your views here.
+# Vista de Crud Noticia
 
 def noticias (request):
   noticias=Noticia.objects.all()

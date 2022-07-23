@@ -13,7 +13,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
 
 
-# Create your views here.
+#Vistas Login, Logout, Registes, Editar Perfil, Crud Categorias, About, Contacto
+
 
 def inicio(request):
   user=request.user
@@ -27,7 +28,6 @@ def inicio(request):
   except:
     raise Http404
   
-  #PlusForm=PlusUser.objects.get(usuario=user) ,"PlusForm":PlusForm
 
   return render(request, "AppInterface/inicio.html",{"entity":noticias,"paginator":paginator})
 
@@ -75,7 +75,7 @@ def register_request(request):
       else:
         return redirect("login")
 
-      #return redirect("inicio")
+      
     return render(request,"AppInterface/register.html",{"formulario":form})
 
   form=UserRegisterForm()
@@ -100,8 +100,6 @@ def editar_PlusUser(request):
 
       info2=PlusForm.cleaned_data
       user.email=info2["email"]
-      #user.password1=info2["password1"]
-      #user.password2=info2["password2"]
       plus_user.nick_name=info2["nick_name"]
       plus_user.fecha_nacimiento=info2["fecha_nacimiento"]
       plus_user.foto_perfil=info2["foto_perfil"]

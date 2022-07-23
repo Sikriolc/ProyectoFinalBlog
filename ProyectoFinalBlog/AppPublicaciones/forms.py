@@ -5,6 +5,8 @@ from django.forms.widgets import NumberInput
 from ckeditor.widgets import CKEditorWidget
 
 
+#Formulario de Publicacion
+
 class PublicForm(forms.ModelForm):
   #autor=forms.CharField(max_length=100)
   titulo=forms.CharField(max_length=100)

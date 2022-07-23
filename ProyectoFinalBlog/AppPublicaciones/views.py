@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.db.models import Q
 
 
-# Create your views here.
+#Crud Publicacion
+
 @login_required
 def publicaciones(request):
   public=Publicacion.objects.all()

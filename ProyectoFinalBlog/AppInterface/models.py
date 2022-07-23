@@ -2,7 +2,7 @@ from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Modelos de Categoria y Avatar
 
 class Categoria(models.Model):
   titulo = models.CharField(max_length=50, verbose_name="titulo")
@@ -17,6 +17,7 @@ class Categoria(models.Model):
     self.icono.storage.delete(self.icono.name)
     super().delete()
 
+#Modelo de Avatar
 class PlusUser(models.Model):
   
   usuario=models.OneToOneField(User, on_delete=models.CASCADE)
@@ -26,9 +27,8 @@ class PlusUser(models.Model):
   biografia=models.TextField(null=True)
 
   def __str__(self):
-    fecha = str(self.fecha_nacimiento)
-    fila = "Apodo: " + self.nick_name + "Biografia" + self.biografia + fecha
-    return fila
+      fila = self.usuario 
+      return fila
   
   def delete(self, using=None, keep_parents=False):
     self.foto_perfil.storage.delete(self.foto_perfil.name)

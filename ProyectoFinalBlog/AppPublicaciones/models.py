@@ -5,6 +5,9 @@ from django.utils import timezone
 from AppInterface.models import *
 from ckeditor.fields import RichTextField
 
+
+#Modelo de Publicacion
+
 class Publicacion(models.Model):
   autor=models.ForeignKey(User,blank=True,null=True, on_delete=models.SET_NULL)
   titulo=models.CharField(max_length=100)

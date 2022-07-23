@@ -7,7 +7,7 @@ from AppInterface.models import *
 from django.contrib.contenttypes.fields import ContentType
 
 
-# Create your models here.
+# Creamos el modelos de la Noticia
 
 class Noticia(models.Model):
   autor=models.ForeignKey(User,blank=True,null=True, on_delete=models.SET_NULL)#para enlazar con usuario logeado tirar ForeignKey, y pasarle captura del error a Lucas
