@@ -6,76 +6,33 @@
 
 
 {% for publicacion in public %}
-  <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{publicacion.imagen.url}}" alt="..." /> <br>Creado por : {{publicacion.autor}}<br><br> <br></div>
-            <div class="col-md-6">
-                <h1 class="display-5 fw-bolder">{{publicacion.titulo}}</h1>
-                <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">$45.00</span>
-                    <span>$40.00</span>
-                </div>
-                <p class="lead">{{publicacion.cuerpo|safe}}</p>
-                <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
-                    </button>
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <a name="" id="" class="btn btn-info" href="{% url 'editarpublicacion' publicacion.id %}" role="button"> Editar</a>|<a name="" id="" class="btn btn-danger" href="{% url 'eliminarpublicacion' publicacion.id %}"  role="button"> Eliminar</a>
-            </div>
-            
+
+<div class="container">
+  <div class="row h-100px">
+    <div class="col w-25 h-25 d-inline-block">
+      <div class="row">
+        <img class="card-img-top w-100 h-100" src="{{publicacion.imagen.url}}" alt="...">
+      </div>          
+    </div>    
+    <div class="col w-75">
+      <div class="row">
+        <div class="small text-muted">{{publicacion.fecha}}
+          <div class="badge bg-dark text-white" style="top: 0.5rem; right: 0.5rem">{{publicacion.autor}}</div>
         </div>
+          <h4 class="card-title">{{publicacion.titulo}}</h4>
+          <p class="card-text">{{publicacion.cuerpo|safe}}</p>
+      </div>
+      
+        <button type="button" class="btn btn-info btn-sm" href="{% url 'editarpublicacion' publicacion.id %}">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm" href="{% url 'eliminarpublicacion' publicacion.id %}">Eliminar</button>
+      <br>
+      
     </div>
-  </section>
+  </div>
+  <br>
+  
+</div>
 
 {% endfor %}
-
-
-<!-- Related items section-->
-        <section class="py-5 bg-light">
-          {% for publicacion in largo %}
-            <div class="row mb-2">
-              <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                  <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">{{publicacion.titulo}}</strong>
-                    <h3 class="mb-0">Featured post</h3>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                  </div>
-                  <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            
-                  </div>
-                </div>
-              </div>
-
-          {% endfor %}
-
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-success">Categoria</strong>
-                  <h3 class="mb-0">Post title</h3>
-                  <div class="mb-1 text-muted">Nov 11</div>
-                  <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          
-                </div>
-              </div>
-            </div>
-            
-        </section>
-        {{post.body|safe}}
-
 {% endblock %}
 

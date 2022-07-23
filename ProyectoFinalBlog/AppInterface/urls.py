@@ -11,9 +11,9 @@ urlpatterns = [
     path('inicio', views.inicio, name="inicio"),
     path('accounts/login/', views.login_request, name="login"),
     path('logout', views.logout_request, name="logout"),
-    path('register', views.register_request, name="register"),
+    path('accounts/signup', views.register_request, name="register"),
     path('editarperfil', views.editar_PlusUser, name="editarperfil"),
-    path('perfil', views.perfil, name="perfil"),
+    path('accounts/profile', views.perfil, name="perfil"),
 
 
     path('categorias', views.categorias, name="categorias"),
