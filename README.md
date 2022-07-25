@@ -12,7 +12,7 @@ Es un proyecto para lograr un blog para la comunidad Gamer, en donde:
 * Fomente el tranajo en equipo
 
 # Acceso a Link Youtube
-Link -> 
+Link -> https://youtu.be/rnprfDbudsw
 
 # Instalacion
 Descargar .zip de GitHub 
